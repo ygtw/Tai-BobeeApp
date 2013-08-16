@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+    <head>
+        <title>互動保庇三太子</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <script type='application/javascript' src='/js/fastclick.js'></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+        <link rel="stylesheet" type="text/css" href="css/icons.css" />    
+ 
+       <!--   
+     <link rel="stylesheet" type="text/css" href="css/af.ui.css" title="default" />
+  -->
+      <link rel="stylesheet" type="text/css" href="css/src/main.css"  />
+      <link rel="stylesheet" type="text/css" href="css/src/appframework.css"  />
+
+      <link rel="stylesheet" type="text/css" href="css/src/ios.css"  />
+      <link rel="stylesheet" type="text/css" href="css/src/ios7.css"  />
+
+      <link rel="stylesheet" type="text/css" href="css/src/badges.css"  />
+      <link rel="stylesheet" type="text/css" href="css/src/buttons.css"  />
+      <link rel="stylesheet" type="text/css" href="css/src/lists.css"  />
+      <link rel="stylesheet" type="text/css" href="css/src/forms.css"  />
+      <link rel="stylesheet" type="text/css" href="css/src/grid.css"  />
+
+      <link rel="stylesheet" type="text/css" href="plugins/css/af.actionsheet.css"  />
+      <link rel="stylesheet" type="text/css" href="plugins/css/af.popup.css"  />
+      <link rel="stylesheet" type="text/css" href="plugins/css/af.selectBox.css"  />
+
+        <!-- uncomment for AppMobi apps <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/appmobi.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/xhr.js"></script>
+-->
+        <script type="text/javascript" charset="utf-8" src="./appframework.js"></script>
+        <!-- include af.desktopBrowsers.js on desktop browsers only -->
+        <script>
+
+            function loadedPanel(what) {
+                //We are going to set the badge as the number of li elements inside the target
+                $.ui.updateBadge("#aflink", $("#af").find("li").length);
+            }
+
+
+            function unloadedPanel(what) {
+                console.log("unloaded " + what.id);
+            }
+
+            if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
+                var script = document.createElement("script");
+                script.src = "plugins/af.desktopBrowsers.js";
+                var tag = $("head").append(script);
+            }
+           
+          
+        </script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.actionsheet.js"></script>
+         <script type="text/javascript" charset="utf-8" src="./plugins/af.css3animate.js"></script>
+         <script type="text/javascript" charset="utf-8" src="./plugins/af.passwordBox.js"></script>
+          <script type="text/javascript" charset="utf-8" src="./plugins/af.scroller.js"></script>
+           <script type="text/javascript" charset="utf-8" src="./plugins/af.selectBox.js"></script>
+            <script type="text/javascript" charset="utf-8" src="./plugins/af.touchEvents.js"></script>
+          <script type="text/javascript" charset="utf-8" src="./plugins/af.touchLayer.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.popup.js"></script>
+
+        <script type="text/javascript" charset="utf-8" src="./ui/src/appframework.ui.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./ui/transitions/all.js"></script>
+                 <script type="text/javascript" charset="utf-8" src="./plugins/af.slidemenu.js"></script>
+
+        <script type="text/javascript">
+$(function() {
+    FastClick.attach(document.body);
+});
+
+
+            /* This function runs once the page is loaded, but appMobi is not yet active */
+            //$.ui.animateHeaders=false;
+             var search=document.location.search.toLowerCase().replace("?","");
+             //if(!search)
+                //$.os.useOSThemes=false;
+
+            var webRoot = "./";
+            // $.os.android=true;
+            $.ui.autoLaunch = false;
+            $.ui.openLinksNewTab = false;
+            //$.ui.resetScrollers=false;
+            
+
+            $(document).ready(function(){
+                   $.ui.showBackButton=false;
+                   $.ui.backButtonText="Back"
+                   $.ui.launch();
+
+
+
+            });
+            
+            /* This code is used to run as soon as appMobi activates */
+            var onDeviceReady = function () {
+                AppMobi.device.setRotateOrientation("portrait");
+                AppMobi.device.setAutoRotate(false);
+                webRoot = AppMobi.webRoot + "";
+                //hide splash screen
+                AppMobi.device.hideSplashScreen();
+                $.ui.blockPageScroll(); //block the page from scrolling at the header/footer
+
+            };
+            document.addEventListener("appMobi.device.ready", onDeviceReady, false);
+
+            function showHide(obj, objToHide) {
+                var el = $("#" + objToHide)[0];
+
+                if (obj.className == "expanded") {
+                    obj.className = "collapsed";
+                } else {
+                    obj.className = "expanded";
+                }
+                $(el).toggle();
+
+            }
+
+
+
+function bobiGO () {
+
+	$.ui.showMask("傳令中...");
+
+
+$.get("http://122.117.232.20/tai/client.php?name="+$("#name").val() ,
+	function(res){console.log(res);
+		$.ui.hideMask();
+
+
+
+
+
+	});
+
+
+	$("#name").val("");
+}
+        </script>
+        <style>
+           .samplecode {
+                background: #ccc;
+                color: #000;
+                border-radius: 10px;
+                padding: 10px;
+                margin-bottom: 10px;
+                margin-top: 10px;
+           }
+
+           /* for the grid demo */
+           .grid > div {
+            border:1px dashed black;
+           }
+        </style>
+</head>
+
+     <body>
+        <div id="afui" class='ios7'>
+          
+<div id="header"></div>
+          
+<div id="content" style="">
+	          
+	<div class="panel" title="手動保庇" data-nav="nav_0" id="page_0" selected="selected" style="text-align:center" data-appbuilder-object="page">
+		<div class="text_item" data-appbuilder-object="text" data-position="static" style="z-index: 0;">
+
+			<br>
+				輸入你想保庇的人名~			<br>
+
+			</div>
+			<div class="input_element form_element" style="width:100%;overflow:hidden" data-appbuilder-object="input" data-position="static">
+			<br>
+				<label for="">姓名</label>
+				<input type="text" style="float:left;" id="name" placeholder="陳小明">
+			</div>
+
+			<a class="button" href="#" style="position: relative; z-index: 2;" data-appbuilder-object="button" data-position="static" data-transition="slide" onclick="bobiGO()">			<img src="move.gif" style="width: 50px; height: 50px; z-index: 0;" alt="Title" data-appbuilder-object="image" data-position="static" class="" title="">
+			<br>
+保庇他！</a>
+			
+
+		</div>
+		<div class="panel" title="FB保庇" data-nav="nav_0" id="fbpage" data-appbuilder-object="page" style="">
+			<div class="text_item" data-appbuilder-object="text" data-position="static">
+				製作中
+			</div>
+			<ul class="list" data-appbuilder-object="list" data-position="static">
+				     
+				<li>
+					<a href="#">Item 1</a>
+				</li>
+				     
+				<li>
+					<a href="#">Item 2</a>
+				</li>
+				     
+			</ul>
+		</div>
+		<div class="panel" title="關於我們" data-nav="nav_0" id="aboutus" data-appbuilder-object="page" style="">
+			<div class="text_item" data-appbuilder-object="text" data-position="static" style="z-index: 0;">
+				<h1>
+					互動保庇三太子
+				</h1>
+				<br>
+					<h3>
+						by 雄威龍獅團 x 宜家軒
+					</h3>
+					<br>
+						特別感謝:
+						<br>
+							中南部科技與表演藝術媒合服務中心計畫
+						</div>
+					</div>
+				</div>
+				          
+				<div id="navbar">
+					<a href="#page_0" class="icon pencil">手動保庇</a><a href="#fbpage" class="icon magnifier">FB保庇</a><a href="#aboutus" class="icon mail">關於我們</a>
+				</div>
+				        
+				<header id="header_0" data-appbuilder-object="header">
+
+					<h1 id="pageTitle" class="">
+						test
+					</h1>
+				</header>
+			
+        </div>
+    </body>
+</html>
